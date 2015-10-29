@@ -131,7 +131,7 @@ VALUES ('Biblioteca')
 ";
 
 if ($conn->query($datos) === TRUE) {
-    echo "Nueva fila creada correctamente. <br>";
+    echo "Nueva fila creada correctamente en Estudios. <br>";
 } else {
     echo "Error: " . $datos . "<br>" . $conn->error;
 }
@@ -140,7 +140,50 @@ if ($conn->query($datos) === TRUE) {
 
 
 //Dimensiones
+//Dimensiones -> Datos personales
+$datos = "INSERT INTO Dimensiones (nombre)
+VALUES ('Datos personales')
+";
 
+if ($conn->query($datos) === TRUE) {
+    echo "Nueva fila creada correctamente en Dimensiones. <br>";
+} else {
+    echo "Error: " . $datos . "<br>" . $conn->error;
+}
+
+//Dimensiones -> Conforatiblidad
+$datos = "INSERT INTO Dimensiones (nombre)
+VALUES ('Confortabilidad')
+";
+
+if ($conn->query($datos) === TRUE) {
+    echo "Nueva fila creada correctamente en Dimensiones. <br>";
+} else {
+    echo "Error: " . $datos . "<br>" . $conn->error;
+}
+
+
+//Dimensiones -> Limpieza
+$datos = "INSERT INTO Dimensiones (nombre)
+VALUES ('Limpieza')
+";
+
+if ($conn->query($datos) === TRUE) {
+    echo "Nueva fila creada correctamente en Dimensiones. <br>";
+} else {
+    echo "Error: " . $datos . "<br>" . $conn->error;
+}
+
+
+$datos = "INSERT INTO Dimensiones (nombre)
+VALUES ('Datos personales')
+";
+
+if ($conn->query($datos) === TRUE) {
+    echo "Nueva fila creada correctamente en Dimensiones. <br>";
+} else {
+    echo "Error: " . $datos . "<br>" . $conn->error;
+}
 
 //Preguntas
 
