@@ -37,10 +37,10 @@ $conn->close();
 $conn = new mysqli($servername, $username, $password, $dbname);
 //Comprobar conexion
 if ($conn->connect_error){
-    die("Conexion fallida: " . mysqli_connect_error() . "<br>");
+    die("Conexion fallida: " .  $conn->connect_error . "<br>");
 }
 
-//Creamos las tablas
+//CRAMOS LAS TABLAS
 
 //Estudios
 $sql = "CREATE TABLE IF NOT EXISTS Estudios (
@@ -124,7 +124,8 @@ if ($conn->query($sql) === TRUE) {
 }
 
 
-//Rellenar tablas
+
+//RELLENAMOS LAS TABLAS
 //Estudios
 $datos = "INSERT INTO Estudios (nombre)
 VALUES ('Biblioteca')
@@ -141,8 +142,8 @@ if ($conn->query($datos) === TRUE) {
 
 //Dimensiones
 //Dimensiones -> Datos personales
-$datos = "INSERT INTO Dimensiones (nombre)
-VALUES ('Datos personales')
+$datos = "INSERT INTO Dimensiones (id_Estudios, nombre)
+VALUES ('1', 'Datos personales')
 ";
 
 if ($conn->query($datos) === TRUE) {
@@ -151,21 +152,9 @@ if ($conn->query($datos) === TRUE) {
     echo "Error: " . $datos . "<br>" . $conn->error;
 }
 
-//Dimensiones -> Conforatiblidad
-$datos = "INSERT INTO Dimensiones (nombre)
-VALUES ('Confortabilidad')
-";
-
-if ($conn->query($datos) === TRUE) {
-    echo "Nueva fila creada correctamente en Dimensiones. <br>";
-} else {
-    echo "Error: " . $datos . "<br>" . $conn->error;
-}
-
-
-//Dimensiones -> Limpieza
-$datos = "INSERT INTO Dimensiones (nombre)
-VALUES ('Limpieza')
+//Dimensiones -> Personal de la biblioteca
+$datos = "INSERT INTO Dimensiones (id_Estudios, nombre)
+VALUES ('1', 'Valor afectivo del servicio')
 ";
 
 if ($conn->query($datos) === TRUE) {
@@ -175,8 +164,9 @@ if ($conn->query($datos) === TRUE) {
 }
 
 
-$datos = "INSERT INTO Dimensiones (nombre)
-VALUES ('Datos personales')
+//Dimensiones -> Mobiliarios y salas
+$datos = "INSERT INTO Dimensiones (id_Estudios, nombre)
+VALUES ('1', 'La biblioteca como espacio')
 ";
 
 if ($conn->query($datos) === TRUE) {
@@ -185,82 +175,259 @@ if ($conn->query($datos) === TRUE) {
     echo "Error: " . $datos . "<br>" . $conn->error;
 }
 
-//Preguntas
+//Dimensiones -> Cantidad y calidad de informacion
+$datos = "INSERT INTO Dimensiones (id_Estudios, nombre)
+VALUES ('1', 'Control de la información')
+";
+
+if ($conn->query($datos) === TRUE) {
+    echo "Nueva fila creada correctamente en Dimensiones. <br>";
+} else {
+    echo "Error: " . $datos . "<br>" . $conn->error;
+}
+
+//Dimensiones -> Sugerencias
+$datos = "INSERT INTO Dimensiones (id_Estudios, nombre)
+VALUES ('1', 'Sugerencias para mejorar: ')
+";
+
+if ($conn->query($datos) === TRUE) {
+    echo "Nueva fila creada correctamente en Dimensiones. <br>";
+} else {
+    echo "Error: " . $datos . "<br>" . $conn->error;
+}
 
 
-//Respuestas
+
+//PREGUNTAS
+//Pregunta 1 respecto a Usuarios
+$datos = "INSERT INTO Preguntas (id_Dimensiones, pregunta, tipo, descripcion, abbr)
+VALUES ('1', 'Tipo de usuario: ', 'user', 'PDI, PAS o Alumno', 'Usuario')
+";
+
+if ($conn->query($datos) === TRUE) {
+    echo "Nueva fila creada correctamente en Preguntas. <br>";
+} else {
+    echo "Error: " . $datos . "<br>" . $conn->error;
+}
+
+//Pregunta 2 respecto a Usuarios
+$datos = "INSERT INTO Preguntas (id_Dimensiones, pregunta, tipo, descripcion, abbr)
+VALUES ('1', 'Sexo: ', 'sexo', 'Hombre o mujer', 'Sexo')
+";
+
+if ($conn->query($datos) === TRUE) {
+    echo "Nueva fila creada correctamente en Preguntas. <br>";
+} else {
+    echo "Error: " . $datos . "<br>" . $conn->error;
+}
+
+//Pregunta 3 respecto a Usuarios
+$datos = "INSERT INTO Preguntas (id_Dimensiones, pregunta, tipo, descripcion, abbr)
+VALUES ('1', 'Edad: ', 'campo_int', 'Marcar edad', 'Edad')
+";
+
+if ($conn->query($datos) === TRUE) {
+    echo "Nueva fila creada correctamente en Preguntas. <br>";
+} else {
+    echo "Error: " . $datos . "<br>" . $conn->error;
+}
+
+//Pregunta 4 respecto a Usuarios
+$datos = "INSERT INTO Preguntas (id_Dimensiones, pregunta, tipo, descripcion, abbr)
+VALUES ('1', 'Facultad de procedencia: ', 'Facultad', 'Seleccionar la facultad de procedencia', 'Facultad')
+";
+
+if ($conn->query($datos) === TRUE) {
+    echo "Nueva fila creada correctamente en Preguntas. <br>";
+} else {
+    echo "Error: " . $datos . "<br>" . $conn->error;
+}
+
+//Pregunta 5 respecto a Usuarios
+$datos = "INSERT INTO Preguntas (id_Dimensiones, pregunta, tipo, descripcion, abbr)
+VALUES ('1', 'Biblioteca: ', 'Biblio', 'Selecciona la biblioteca a evaluar', 'Biblioteca')
+";
+
+if ($conn->query($datos) === TRUE) {
+    echo "Nueva fila creada correctamente en Preguntas. <br>";
+} else {
+    echo "Error: " . $datos . "<br>" . $conn->error;
+}
+
+//Pregunta 1 respecto a Personal
+$datos = "INSERT INTO Preguntas (id_Dimensiones, pregunta, tipo, descripcion, abbr)
+VALUES ('2', 'Tiempos de espera para ser atendido: ', 'Puntuar', 'Evalue el tiempo de espera en ser atentido.', 'Espera')
+";
+
+if ($conn->query($datos) === TRUE) {
+    echo "Nueva fila creada correctamente en Preguntas. <br>";
+} else {
+    echo "Error: " . $datos . "<br>" . $conn->error;
+}
+
+//Pregunta 2 respecto a Personal
+$datos = "INSERT INTO Preguntas (id_Dimensiones, pregunta, tipo, descripcion, abbr)
+VALUES ('2', 'Trato del personal: ', 'Puntuar', 'Evalue el trato del personal.', 'Trato')
+";
+
+if ($conn->query($datos) === TRUE) {
+    echo "Nueva fila creada correctamente en Preguntas. <br>";
+} else {
+    echo "Error: " . $datos . "<br>" . $conn->error;
+}
+
+//Pregunta 3 respecto a Personal
+$datos = "INSERT INTO Preguntas (id_Dimensiones, pregunta, tipo, descripcion, abbr)
+VALUES ('2', 'Número adecuado de trabajadores: ', 'Puntuar', 'Evalue si el número de trabajadores actual es el adecuado', 'Trabajadores')
+";
+
+if ($conn->query($datos) === TRUE) {
+    echo "Nueva fila creada correctamente en Preguntas. <br>";
+} else {
+    echo "Error: " . $datos . "<br>" . $conn->error;
+}
+
+//Pregunta 4 respecto a Personal
+$datos = "INSERT INTO Preguntas (id_Dimensiones, pregunta, tipo, descripcion, abbr)
+VALUES ('2', 'Resolución de dudas: ', 'Puntuar', 'Evalue las respuestas del personal a las dudas surgidas.', 'Dudas')
+";
+
+if ($conn->query($datos) === TRUE) {
+    echo "Nueva fila creada correctamente en Preguntas. <br>";
+} else {
+    echo "Error: " . $datos . "<br>" . $conn->error;
+}
+
+
+
+//Pregunta 1 respecto a Mobiliario
+$datos = "INSERT INTO Preguntas (id_Dimensiones, pregunta, tipo, descripcion, abbr)
+VALUES ('3', 'Limpieza: ', 'Puntuar', 'Evalue la limpieza de las bibliotecas.', 'Limpieza')
+";
+
+if ($conn->query($datos) === TRUE) {
+    echo "Nueva fila creada correctamente en Preguntas. <br>";
+} else {
+    echo "Error: " . $datos . "<br>" . $conn->error;
+}
+
+//Pregunta 2 respecto a Mobiliario
+$datos = "INSERT INTO Preguntas (id_Dimensiones, pregunta, tipo, descripcion, abbr)
+VALUES ('3', 'Estado: ', 'Puntuar', 'Evalue el estado del mobiliario.', 'Estado_Mob')
+";
+
+if ($conn->query($datos) === TRUE) {
+    echo "Nueva fila creada correctamente en Preguntas. <br>";
+} else {
+    echo "Error: " . $datos . "<br>" . $conn->error;
+}
+
+//Pregunta 3 respecto a Mobiliario
+$datos = "INSERT INTO Preguntas (id_Dimensiones, pregunta, tipo, descripcion, abbr)
+VALUES ('3', 'Confort de las salas de trabajo: ', 'Puntuar', 'Evalue la confortabilidad de las salas de trabajo.', 'Confort')
+";
+
+if ($conn->query($datos) === TRUE) {
+    echo "Nueva fila creada correctamente en Preguntas. <br>";
+} else {
+    echo "Error: " . $datos . "<br>" . $conn->error;
+}
+
+//Pregunta 4 respecto a Mobiliario
+$datos = "INSERT INTO Preguntas (id_Dimensiones, pregunta, tipo, descripcion, abbr)
+VALUES ('3', 'Número adecuado de las salas: ', 'Puntuar', 'Evalue si el número actual de salas es el adecuado.', 'Salas')
+";
+
+if ($conn->query($datos) === TRUE) {
+    echo "Nueva fila creada correctamente en Preguntas. <br>";
+} else {
+    echo "Error: " . $datos . "<br>" . $conn->error;
+}
+
+//Pregunta 5 respecto a Mobiliario
+$datos = "INSERT INTO Preguntas (id_Dimensiones, pregunta, tipo, descripcion, abbr)
+VALUES ('3', 'Orden: ', 'Puntuar', 'Evalue el orden estructural del mobiliario.', 'Orden')
+";
+
+if ($conn->query($datos) === TRUE) {
+    echo "Nueva fila creada correctamente en Preguntas. <br>";
+} else {
+    echo "Error: " . $datos . "<br>" . $conn->error;
+}
+
+//Pregunta 1 respecto a Informacion
+$datos = "INSERT INTO Preguntas (id_Dimensiones, pregunta, tipo, descripcion, abbr)
+VALUES ('4', 'Cantidad de información disponible: ', 'Puntuar', 'Evalue si la cantidad de información disponible es la adecuada.', 'Cantidad')
+";
+
+if ($conn->query($datos) === TRUE) {
+    echo "Nueva fila creada correctamente en Preguntas. <br>";
+} else {
+    echo "Error: " . $datos . "<br>" . $conn->error;
+}
+
+//Pregunta 2 respecto a Informacion
+$datos = "INSERT INTO Preguntas (id_Dimensiones, pregunta, tipo, descripcion, abbr)
+VALUES ('4', 'Calidad de la información: ', 'Puntuar', 'Evalue si la calidad de información disponible es la adecuada.', 'Calidad')
+";
+
+if ($conn->query($datos) === TRUE) {
+    echo "Nueva fila creada correctamente en Preguntas. <br>";
+} else {
+    echo "Error: " . $datos . "<br>" . $conn->error;
+}
+
+//Pregunta 3 respecto a Informacion
+$datos = "INSERT INTO Preguntas (id_Dimensiones, pregunta, tipo, descripcion, abbr)
+VALUES ('4', 'Estado de los materiales: ', 'Puntuar', 'Evalue si los materiales de información estan en buen estado.', 'Estado_Inf')
+";
+
+if ($conn->query($datos) === TRUE) {
+    echo "Nueva fila creada correctamente en Preguntas. <br>";
+} else {
+    echo "Error: " . $datos . "<br>" . $conn->error;
+}
+
+//Pregunta 4 respecto a Informacion
+$datos = "INSERT INTO Preguntas (id_Dimensiones, pregunta, tipo, descripcion, abbr)
+VALUES ('4', 'Tiempos de renovación: ', 'Puntuar', 'Evalue si los tiempos de renovación son adecuados.', 'Renovacion')
+";
+
+if ($conn->query($datos) === TRUE) {
+    echo "Nueva fila creada correctamente en Preguntas. <br>";
+} else {
+    echo "Error: " . $datos . "<br>" . $conn->error;
+}
+
+//Pregunta 5 respecto a Informacion
+$datos = "INSERT INTO Preguntas (id_Dimensiones, pregunta, tipo, descripcion, abbr)
+VALUES ('4', 'Utilidad de la biblioteca online: ', 'Puntuar', 'Evalue la utilidad de la biblioteca online.', 'Online')
+";
+
+if ($conn->query($datos) === TRUE) {
+    echo "Nueva fila creada correctamente en Preguntas. <br>";
+} else {
+    echo "Error: " . $datos . "<br>" . $conn->error;
+}
+
+//Pregunta 1 respecto a Sugerencias
+$datos = "INSERT INTO Preguntas (id_Dimensiones, pregunta, tipo, descripcion, abbr)
+VALUES ('5', 'Agregue sus quejas o sugerencias para la mejora de la Biblioteca: ', 'Sugerencia', 'Aquí puede escribir sus quejas o sugerencias con el propósito de mejorar.', 'Sugerencia')
+";
+
+if ($conn->query($datos) === TRUE) {
+    echo "Nueva fila creada correctamente en Preguntas. <br>";
+} else {
+    echo "Error: " . $datos . "<br>" . $conn->error;
+}
+
 
 
 
 
 
 $conn->close();
-
-
-
-
-/*
-
-$query="CREATE TABLE Estudios(
-	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	nombre tinyTEXT NOT NULL
-	)";
-mysql_query($query);
-
-
-
-$query="CREATE TABLE EncuestasRellenas(
-	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	id_Estudios INT NOT NULL,
-	hora_comienzo INT NOT NULL,
-	hora_fin INT NOT NULL,
-	ip TINYTEXT,
-	direccion TEXT,
-	referer TEXT,
-	userAgent TEXT,
-	FOREIGN KEY (id_Estudios) REFERENCES Estudios(id)
-    )";
-mysql_query($query);
-
-
-
-$query="CREATE TABLE Dimensiones(
-	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	id_Estudios INT NOT NULL,
-	nombre tinyTEXT NOT NULL,
-	FOREIGN KEY (id_Estudios) REFERENCES Estudios(id)
-     )";
-mysql_query($query);
-
-
-
-$query="CREATE TABLE Preguntas(
-	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	id_Dimensiones INT NOT NULL,
-	pregunta TEXT NOT NULL,
-	tipo tinyTEXT NOT NULL,
-	descripcion TEXT,
-	abbr tinyTEXT NOT NULL,
-	FOREIGN KEY (id_Dimensiones) REFERENCES Dimensiones(id)
-     )";
-mysql_query($query);
-
-
-
-$query="CREATE TABLE Respuestas(
-	id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	id_EncuestasRellenas INT NOT NULL,
-	id_Preguntas INT NOT NULL,
-	respuesta TEXT NOT NULL,
-	FOREIGN KEY (id_Preguntas) REFERENCES Preguntas(id),
-	FOREIGN KEY (id_EncuestasRellenas) REFERENCES EncuestasRellenas(id)
-     )";
-mysql_query($query);
-
-
-mysql_close();
-*/
-
 ?>
 
 
