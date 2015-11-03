@@ -17,13 +17,15 @@
     			die("Conexion fallida: " .  $conn->connect_error . "<br>");
 			}
 
-			$res_preguntas = $conn->query("SELECT count(pregunta) FROM Preguntas");
-			$num_filas = mysql_num_rows($res_preguntas);
+			$res_preguntas = $conn->query("SELECT pregunta FROM Preguntas");
+			$num_filas = $res_preguntas->num_rows;
+			//$num_filas = mysql_num_rows($res_preguntas);
 
 			echo "Filas: ". $num_filas . "<br>";
 			/*for($i=1; $i<=$fil_preguntas; $i++){
 				$preguntas[$i] = $conn->query("SELECT pregunta FROM Preguntas WHERE id=$i")
 			}*/
+			$res_preguntas->close();
 			$conn->close();
 		?>
 
