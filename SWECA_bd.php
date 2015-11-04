@@ -29,7 +29,7 @@ if ($conn->query($sql) === TRUE) {
 } else {
     echo "Error al crear la base de datos: " . $conn->error . "<br>";
 }
-
+$conn->set_charset("utf8");
 $conn->close();
 
 
@@ -40,6 +40,7 @@ if ($conn->connect_error){
     die("Conexion fallida: " .  $conn->connect_error . "<br>");
 }
 
+$conn->set_charset("utf8");
 //CRAMOS LAS TABLAS
 
 //Estudios

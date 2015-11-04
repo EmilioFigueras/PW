@@ -1,8 +1,10 @@
 <HTML>
 	<HEAD>
 		<TITLE>encuesta.php</TITLE>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	</HEAD>
 	<BODY>
+
 		<?php
 			//Conexion con la base
 			$servername = "localhost";
@@ -16,6 +18,7 @@
 			if ($conn->connect_error){
     			die("Conexion fallida: " .  $conn->connect_error . "<br>");
 			}
+			$conn->set_charset("utf8");
 
 			$res_preguntas = $conn->query("SELECT pregunta FROM Preguntas");
 			$num_filas = $res_preguntas->num_rows;
