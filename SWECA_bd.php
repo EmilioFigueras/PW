@@ -60,12 +60,12 @@ if ($conn->query($sql) === TRUE) {
 $sql = "CREATE TABLE IF NOT EXISTS EncuestasRellenas (
 id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
 id_Estudios INT UNSIGNED NOT NULL,
-hora_comienzo INT NOT NULL,
-hora_fin INT NOT NULL,
+hora_comienzo TIME NOT NULL,
+tiempo TIME NOT NULL,
 ip tinyTEXT,
-direccion TEXT,
-referer TEXT,
-userAgent TEXT,
+browser TEXT,
+version TEXT,
+os TEXT,
 FOREIGN KEY (id_Estudios) REFERENCES Estudios(id)
 )";
 
