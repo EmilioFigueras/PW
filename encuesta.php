@@ -8,8 +8,8 @@
 		<?php
 			//Conexion con la base
 			$servername = "localhost";
-			$username = "root";
-			$password = "toor";
+			$username = "usuario";
+			$password = "usuario";
 			$dbname = "SWECA";
 
 			//Crear conexion
