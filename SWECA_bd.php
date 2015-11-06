@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="TEXT/html; charset=utf-8" />
-<title>Trabajando con MySQL</title>
+<title>Creación de la base de datos</title>
 </head>
 
 <body>

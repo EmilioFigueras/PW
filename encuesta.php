@@ -20,17 +20,6 @@
 			}
 			$conn->set_charset("utf8");
 
-			/*$res_preguntas = $conn->query("SELECT pregunta FROM Preguntas");
-			$num_filas = $res_preguntas->num_rows;
-			$res_preguntas->close();
-
-			//Almacenamos cada pregunta en el vector preguntas[]
-			for($i=1; $i<=$num_filas; $i++){
-				$consulta_pre[$i] = $conn->query("SELECT pregunta FROM Preguntas WHERE id=$i");
-				while($row = $consulta_pre[$i]->fetch_array())
-					$preguntas[$i] = $row[0];
-			}*/
-
 			$hora_inicio = date("H:i:s");
 
 			//$conn->close();

@@ -1,6 +1,6 @@
 <HTML>
 	<HEAD>
-		<TITLE>Insertar.php</TITLE>
+		<TITLE>Encuesta completada</TITLE>
 	</HEAD>
 	<BODY>
 	<?php
