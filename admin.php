@@ -20,6 +20,24 @@
 	$conn->set_charset("utf8");
 
 
+
+	//ESTADISTICAS
+	//Pregunta de sexo
+	$consulta = $conn->query("SELECT * FROM Respuestas WHERE id_Preguntas='2'");
+	$hombres = 0;
+	$mujeres = 0;
+	while($sexo = $consulta->fetch_array()){
+		if($sexo['respuesta'] == "Hombre")
+			$hombres++;
+		else
+			$mujeres++;
+	}
+	echo $hombres;
+	echo "<br><br>";
+	echo $mujeres;
+
+
+	$consulta->free_result();
 	$conn->close();
 	?>
 
