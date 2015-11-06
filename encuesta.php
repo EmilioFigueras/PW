@@ -102,16 +102,13 @@
 									  <br><br>";
 							}
 						}//fin while preguntas
-
+						$cons_preg->free_result(); //Liberamos el resultado de preguntas
 					}//fin while dimensiones
+					$cons_dim->free_result(); //Liberamos el resultado de dimensiones
+					$conn->close();
 				?>
 				<INPUT TYPE="SUBMIT" value="Terminar">
 			</FORM>
 		</div>
-		<?php
-		$preg->free_result(); //Liberamos el resultado de preguntas
-		$dim->free_result(); //Liberamos el resultado de dimensiones
-		$conn->close();
-		?>
 	</BODY>
 </HTML>  

@@ -47,100 +47,18 @@ $consulta_Encuesta = $conn->query("SELECT id FROM EncuestasRellenas");
 $num_filas = $consulta_Encuesta->num_rows;
 $consulta_Encuesta->close();
 
-
-
 //Ejecucion de la sentencia SQL
 //Recibimos los datos
-$Usuario = $_POST['Usuario'];
-$Sexo = $_POST['Sexo'];
-$Edad = $_POST['Edad'];
-$Facultad = $_POST['Facultad'];
-$Biblioteca = $_POST['Biblioteca'];
-$Espera = $_POST['Espera'];
-$Trato = $_POST['Trato'];
-$Trabajadores = $_POST['Trabajadores'];
-$Dudas = $_POST['Dudas'];
-$Limpieza = $_POST['Limpieza'];
-$Estado_Mob = $_POST['Estado_Mob'];
-$Confort = $_POST['Confort'];
-$Salas = $_POST['Salas'];
-$Orden = $_POST['Orden'];
-$Cantidad = $_POST['Cantidad'];
-$Calidad = $_POST['Calidad'];
-$Estado_Inf = $_POST['Estado_Inf'];
-$Renovacion = $_POST['Renovacion'];
-$Online = $_POST['Online'];
-$Sugerencia = $_POST['Sugerencia'];
 
-//Pregunta 1
-$conn->query("INSERT INTO Respuestas (id_EncuestasRellenas, id_Preguntas, respuesta) VALUES ('$num_filas', '1', '$Usuario')");
-
-//Pregunta 2
-$conn->query("INSERT INTO Respuestas (id_EncuestasRellenas, id_Preguntas, respuesta) VALUES ('$num_filas', '2', '$Sexo')");
-
-//Pregunta 3
-$conn->query("INSERT INTO Respuestas (id_EncuestasRellenas, id_Preguntas, respuesta) VALUES ('$num_filas', '3', '$Edad')");
-
-//Pregunta 4
-$conn->query("INSERT INTO Respuestas (id_EncuestasRellenas, id_Preguntas, respuesta) VALUES ('$num_filas', '4', '$Facultad')");
-
-//Pregunta 5
-$conn->query("INSERT INTO Respuestas (id_EncuestasRellenas, id_Preguntas, respuesta) VALUES ('$num_filas', '5', '$Biblioteca')");
-
-//Pregunta 6
-$conn->query("INSERT INTO Respuestas (id_EncuestasRellenas, id_Preguntas, respuesta) VALUES ('$num_filas', '1', '$Espera')");
-
-//Pregunta 7
-$conn->query("INSERT INTO Respuestas (id_EncuestasRellenas, id_Preguntas, respuesta) VALUES ('$num_filas', '2', '$Trato')");
-
-//Pregunta 8
-$conn->query("INSERT INTO Respuestas (id_EncuestasRellenas, id_Preguntas, respuesta) VALUES ('$num_filas', '3', '$Trabajadores')");
-
-//Pregunta 9
-$conn->query("INSERT INTO Respuestas (id_EncuestasRellenas, id_Preguntas, respuesta) VALUES ('$num_filas', '4', '$Dudas')");
-
-//Pregunta 10
-$conn->query("INSERT INTO Respuestas (id_EncuestasRellenas, id_Preguntas, respuesta) VALUES ('$num_filas', '1', '$Limpieza')");
-
-//Pregunta 11
-$conn->query("INSERT INTO Respuestas (id_EncuestasRellenas, id_Preguntas, respuesta) VALUES ('$num_filas', '2', '$Estado_Mob')");
-
-//Pregunta 12
-$conn->query("INSERT INTO Respuestas (id_EncuestasRellenas, id_Preguntas, respuesta) VALUES ('$num_filas', '3', '$Confort')");
-
-//Pregunta 13
-$conn->query("INSERT INTO Respuestas (id_EncuestasRellenas, id_Preguntas, respuesta) VALUES ('$num_filas', '4', '$Salas')");
-
-//Pregunta 14
-$conn->query("INSERT INTO Respuestas (id_EncuestasRellenas, id_Preguntas, respuesta) VALUES ('$num_filas', '5', '$Orden')");
-
-//Pregunta 15
-$conn->query("INSERT INTO Respuestas (id_EncuestasRellenas, id_Preguntas, respuesta) VALUES ('$num_filas', '1', '$Cantidad')");
-
-//Pregunta 16
-$conn->query("INSERT INTO Respuestas (id_EncuestasRellenas, id_Preguntas, respuesta) VALUES ('$num_filas', '2', '$Calidad')");
-
-//Pregunta 17
-$conn->query("INSERT INTO Respuestas (id_EncuestasRellenas, id_Preguntas, respuesta) VALUES ('$num_filas', '3', '$Estado_Inf')");
-
-//Pregunta 18
-$conn->query("INSERT INTO Respuestas (id_EncuestasRellenas, id_Preguntas, respuesta) VALUES ('$num_filas', '4', '$Renovacion')");
-
-//Pregunta 19
-$conn->query("INSERT INTO Respuestas (id_EncuestasRellenas, id_Preguntas, respuesta) VALUES ('$num_filas', '5', '$Online')");
-
-//Pregunta 20
-$conn->query("INSERT INTO Respuestas (id_EncuestasRellenas, id_Preguntas, respuesta) VALUES ('$num_filas', '1', '$Sugerencia')");
-
-
-//mysql_query("insert into Respuestas (id_EncuestasRellenas, id_Preguntas, respuesta) values (1, 1, '$tipo','$sexo')");
-    
-
-
-
-
+$cons_preg = $conn->query("SELECT * FROM Preguntas"); //Sacamos las preguntas
+while($preg = $cons_preg->fetch_array()){
+	$resp = $_POST[$preg['abbr']];
+	$conn->query("INSERT INTO Respuestas (id_EncuestasRellenas, id_Preguntas, respuesta) VALUES ('$num_filas', ".$preg['id'].", '$resp')");
 }
+$cons_preg->free_result();
 $conn->close();
+
+}//fin else
 
 //FUNCIONES
 //Funcion para obtener ip (no funciona, no devuelve nada)
@@ -202,6 +120,5 @@ function resta($inicio, $fin)
 
 ?>
 <h1><div align="center">Registro Insertado</div></h1>
-<div align="center"><a href="lectura.php">Visualizar el contenido de la base</a></div>
 </BODY>
 </HTML>  
