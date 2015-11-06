@@ -144,7 +144,7 @@ if ($conn->query($datos) === TRUE) {
 //Dimensiones
 //Dimensiones -> Datos personales
 $datos = "INSERT INTO Dimensiones (id_Estudios, nombre)
-VALUES ('1', 'Datos personales')
+VALUES ('1', 'Datos personales:')
 ";
 
 if ($conn->query($datos) === TRUE) {
@@ -155,7 +155,7 @@ if ($conn->query($datos) === TRUE) {
 
 //Dimensiones -> Personal de la biblioteca
 $datos = "INSERT INTO Dimensiones (id_Estudios, nombre)
-VALUES ('1', 'Valor afectivo del servicio')
+VALUES ('1', 'Valor afectivo del servicio:')
 ";
 
 if ($conn->query($datos) === TRUE) {
@@ -167,7 +167,7 @@ if ($conn->query($datos) === TRUE) {
 
 //Dimensiones -> Mobiliarios y salas
 $datos = "INSERT INTO Dimensiones (id_Estudios, nombre)
-VALUES ('1', 'La biblioteca como espacio')
+VALUES ('1', 'La biblioteca como espacio:')
 ";
 
 if ($conn->query($datos) === TRUE) {
@@ -178,7 +178,7 @@ if ($conn->query($datos) === TRUE) {
 
 //Dimensiones -> Cantidad y calidad de informacion
 $datos = "INSERT INTO Dimensiones (id_Estudios, nombre)
-VALUES ('1', 'Control de la información')
+VALUES ('1', 'Control de la información:')
 ";
 
 if ($conn->query($datos) === TRUE) {
@@ -247,7 +247,7 @@ if ($conn->query($datos) === TRUE) {
 
 //Pregunta 5 respecto a Usuarios
 $datos = "INSERT INTO Preguntas (id_Dimensiones, pregunta, tipo, descripcion, abbr)
-VALUES ('1', 'Biblioteca: ', 'Biblio', 'Selecciona la biblioteca a evaluar', 'Biblioteca')
+VALUES ('1', 'Biblioteca: ', 'Facultad', 'Selecciona la biblioteca a evaluar', 'Biblioteca')
 ";
 
 if ($conn->query($datos) === TRUE) {
