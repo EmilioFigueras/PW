@@ -1,0 +1,16 @@
+ .barra{
+	background: #ff3019;
+	background: -moz-linear-gradient(top, #ff3019 0%, #cf0404 100%);
+	background: -webkit-linear-gradient(top, #ff3019 0%,#cf0404 100%);
+	background: linear-gradient(to bottom, #ff3019 0%,#cf0404 100%);
+	clear: both;
+	height: 15px;
+	color: white;
+	font-weight: bold;
+	text-align: right;
+	padding: 6px;
+	border-radius: 4px;
+	max-width: 356px;
+	min-width: 20px;
+}
+

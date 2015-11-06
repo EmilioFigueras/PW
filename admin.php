@@ -2,6 +2,7 @@
   <head>
     <title>Panel de administración</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="Barra.css">
   </head>
   <body>
   	<?php
@@ -32,10 +33,12 @@
 		else
 			$mujeres++;
 	}
-	echo $hombres;
+	
+	echo "<h3>Hombres: </h3>";
+	echo '<div class="barra" style="width:'.(($hombres*100)/($hombres+$mujeres)).'%;">'.round((($hombres*100)/($hombres+$mujeres))).'%</div></li>';
 	echo "<br><br>";
-	echo $mujeres;
-
+	echo "<h3>Mujeres: </h3>";
+	echo '<div class="barra" style="width:'.(($mujeres*100)/($hombres+$mujeres)).'%;">'.round((($mujeres*100)/($hombres+$mujeres))).'%</div></li>';
 
 	$consulta->free_result();
 	$conn->close();
