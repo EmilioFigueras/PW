@@ -65,13 +65,26 @@
 								echo "<INPUT TYPE='TEXT' NAME=".$preg['abbr']."><br><br>";
 							}elseif($preg['tipo'] == "Facultad"){
 								echo "<SELECT NAME=".$preg['abbr'].">
-										<option>Medicina</option>
-										<option>Educacion</option>
-										<option>Ciencias Sociales</option>
-										<option>Derecho</option>
-										<option>Filosofia y Letras</option>
-										<option>Ciencias del Mar</option>
-										<option>Ingenieria</option>
+										<option>Facultad de Derecho (Sede Jerez)</option>
+										<option>Facultad de Derecho (Sede Algeciras)</option>
+										<option>Facultad de Ciencias Económicas y Empresariales (Sede Jerez)</option>
+										<option>Facultad de Ciencias Económicas y Empresariales (Sede Algeciras)</option>
+										<option>Facultad de Ciencias del Trabajo (Sede Cádiz)</option>
+										<option>Facultad de Ciencias del Trabajo (Sede Algeciras)</option>
+										<option>Facultad de Ciencias Sociales y de la Comunicación</option>
+										<option>Escuela Politécnica Superior de Algeciras</option>
+										<option>Facultad de Enfermería</option>
+										<option>Facultad de Enfermería y Fisioterapia</option>
+										<option>Facultad de Ciencias Económicas y Empresariales</option>
+										<option>Facultad de Filosofía y Letras</option>
+										<option>Facultad de Medicina</option>
+										<option>Escuela Profesional de la Medicina de la Educación Física y Deporte</option>
+										<option>Escuela de Ingeniería Naval y Oceánica</option>
+										<option>Facultad de Ciencias</option>
+										<option>Escuela de Ingenierías Marina, Náutica y Radioelectrónica</option>
+										<option>Facultad de Ciencias de la Educación</option>
+										<option>Facultad de Ciencias del Mar y Ambientales</option>
+										<option>Escuela Superior de Ingeniería</option>
 									  </SELECT><br><br>";
 							}elseif($preg['tipo'] == "Puntuar"){
 								echo "<SELECT NAME=".$preg['abbr'].">
