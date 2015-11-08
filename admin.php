@@ -6,7 +6,7 @@
   </head>
   <body>
   	<div align="center">
-  		<form action="agregar.php">
+  		<form action="agregar.html">
        			<button type="submit">Agregar una nueva pregunta</button>
        	</form>
     </div>
@@ -91,6 +91,7 @@
 			if($array[$i]!=""){
 				echo "<h5>".$i.":</h5>";
 				echo '<div class="barra" style="width:'.(($array[$i]*100)/($total)).'%;">'.round((($array[$i]*100)/($total))).'%</div>';
+				$array[$i]='0'; //Lo dejamos vacío para futuros usos del array
 			}
 		}
 		echo "<br><br><br>";
@@ -99,7 +100,6 @@
 	$cons_preg->free_result();
 
 	//Preguntas con Facultades
-	$total = 0;
 	$opcion_fac =[
 		0 => "Facultad de Derecho (Sede Jerez)",
 		1 => "Facultad de Derecho (Sede Algeciras)",
@@ -124,6 +124,9 @@
 	];
 	$cons_preg = $conn->query("SELECT * FROM Preguntas WHERE tipo='Facultad'");
 	while($preg = $cons_preg->fetch_array()){
+		$total = 0;
+		for($i=0; $i<20; $i++)
+			$array[$i]='0';
 		$consulta = $conn->query("SELECT * FROM Respuestas WHERE id_Preguntas=".$preg['id']);
 		while($entero = $consulta->fetch_array()){
 			$array[$entero['respuesta']]++;
@@ -141,9 +144,12 @@
 	$cons_preg->free_result();
 
 	//Preguntas con puntuaciones
-	$total = 0;
+	
 	$cons_preg = $conn->query("SELECT * FROM Preguntas WHERE tipo='Puntuar'");
 	while($preg = $cons_preg->fetch_array()){
+		$total = 0;
+		for($i=1; $i<11; $i++)
+			$array[$i]='0';
 		$consulta = $conn->query("SELECT * FROM Respuestas WHERE id_Preguntas=".$preg['id']);
 		while($entero = $consulta->fetch_array()){
 			$array[$entero['respuesta']]++;
@@ -151,12 +157,11 @@
 		}
 		$consulta->free_result();
 		echo "<h3>".$preg['pregunta']."</h3>";
-		for($i=1; $i<11; $i++){
+			for($i=1; $i<11; $i++){
 				echo "<h5>".$i.":</h5>";
 				echo '<div class="barra" style="width:'.(($array[$i]*100)/($total)).'%;">'.round((($array[$i]*100)/($total))).'%</div>';
 		}
 		echo "<br><br><br>";
-
 	}
 	$cons_preg->free_result();
 
