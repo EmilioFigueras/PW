@@ -28,16 +28,14 @@ $hora_comienzo = base64_decode($_GET["var"]); //Recibimos y desencriptamos la ho
 $hora_fin = date("H:i:s");
 $tiempo = resta($hora_comienzo, $hora_fin);
 
-if(strtotime($tiempo)<strtotime("00:00:10")){
+if(strtotime($tiempo)<strtotime("00:00:18")){
 	echo "Tiempo en hacer la encuesta demasiado corto.";
 }else{
 
-//Registrmos al usuario
+//Registramos al usuario
 $datos = "INSERT INTO EncuestasRellenas (id_Estudios, hora_comienzo, tiempo, ip, browser, version, os) 
 VALUES ('1', '$hora_comienzo', '$tiempo', '$ip', '$browser', '$version', '$os')";
-if ($conn->query($datos) === TRUE) {
-    echo "Conexión establecida correctamente con el usuario. <br>";
-} else {
+if ($conn->query($datos) === TRUE) {} else {
     echo "Error: " . $datos . "<br>" . $conn->error;
 }
 
@@ -96,14 +94,14 @@ function detect()
 		if ($s)
 		{
 			$info['browser'] = $parent;
-			$info['os'] = $version;
+			$info['version'] = $version;
 		}
 	}
 	# obtenemos el sistema operativo
 	foreach($os as $val)
 	{
 		if (strpos(strtoupper($_SERVER['HTTP_USER_AGENT']),$val)!==false)
-			$info['version'] = $val;
+			$info['os'] = $val;
 	}
 	# devolvemos el array de valores
 	return $info;
@@ -119,6 +117,6 @@ function resta($inicio, $fin)
   }
 
 ?>
-<h1><div align="center">Registro Insertado</div></h1>
+<h1><div align="center">Gracias por su colaboración.</div></h1>
 </BODY>
 </HTML>  

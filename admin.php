@@ -28,6 +28,71 @@
 
 
 	//ESTADISTICAS
+	//Sistema
+	//Sistema Operativo
+	$total=0;
+	$opcion_so=[
+		0 => "WIN",
+		1 => "MAC",
+		2 => "LINUX",
+	];
+	$consulta = $conn->query("SELECT * FROM EncuestasRellenas");
+	while ($sis = $consulta->fetch_array()){
+		for($i=0; $i<3; $i++){
+			if($sis['os'] == $opcion_so[$i])
+				$array[$i]++;
+		}
+		$total++;
+	}
+	$consulta->free_result();
+	echo "<h3>Sistema Operativo:</h3>";
+	for($i=0; $i<3; $i++){
+		echo "<h5>".$opcion_so[$i].":</h5>";
+		echo '<div class="barra" style="width:'.(($array[$i]*100)/($total)).'%;">'.round((($array[$i]*100)/($total))).'%</div>';
+		$array[$i]='0'; //Lo dejamos vacío para futuros usos del array
+	}
+	echo "<br><br><br>";
+
+
+	//Navegador
+	$opcion_browser =[
+		0 => "IE",
+		1 => "OPERA",
+		2 => "MOZILLA",
+		3 => "NETSCAPE",
+		4 => "FIREFOX",
+		5 => "SAFARI",
+		6 => "CHROME",
+	];
+	$consulta = $conn->query("SELECT * FROM EncuestasRellenas");
+	while ($sis = $consulta->fetch_array()){
+		for($i=0; $i<7; $i++){
+			if($sis['browser'] == $opcion_browser[$i])
+				$array[$i]++;
+		}
+	}
+	$consulta->free_result();
+	echo "<h3>Navegador usado:</h3>";
+	for($i=0; $i<7; $i++){
+		echo "<h5>".$opcion_browser[$i].":</h5>";
+		echo '<div class="barra" style="width:'.(($array[$i]*100)/($total)).'%;">'.round((($array[$i]*100)/($total))).'%</div>';
+		$array[$i]='0'; //Lo dejamos vacío para futuros usos del array
+	}
+	echo "<br><br><br>";
+
+	//Horas
+	$consulta = $conn->query("SELECT * FROM EncuestasRellenas");
+	while ($sis = $consulta->fetch_array()){
+		$array[intval($sis['hora_comienzo'])]++;
+	}
+	$consulta->free_result();
+	echo "<h3>Horario en el que se realiza la encuesta:</h3>";
+	for($i=0; $i<24; $i++){
+		echo "<h5>".$i.":00 horas:</h5>";
+		echo '<div class="barra" style="width:'.(($array[$i]*100)/($total)).'%;">'.round((($array[$i]*100)/($total))).'%</div>';
+		$array[$i]='0'; //Lo dejamos vacío para futuros usos del array
+	}
+
 	//Pregunta de usuario
 	$consulta = $conn->query("SELECT * FROM Respuestas WHERE id_Preguntas='1'");
 	$alumnos = 0;
@@ -88,7 +153,7 @@
 		$consulta->free_result();
 		echo "<h3>".$preg['pregunta']."</h3>";
 		for($i=1; $i<100; $i++){
-			if($array[$i]!=""){
+			if($array[$i]!="" && $array[$i]!=0){
 				echo "<h5>".$i.":</h5>";
 				echo '<div class="barra" style="width:'.(($array[$i]*100)/($total)).'%;">'.round((($array[$i]*100)/($total))).'%</div>';
 				$array[$i]='0'; //Lo dejamos vacío para futuros usos del array
@@ -125,8 +190,6 @@
 	$cons_preg = $conn->query("SELECT * FROM Preguntas WHERE tipo='Facultad'");
 	while($preg = $cons_preg->fetch_array()){
 		$total = 0;
-		for($i=0; $i<20; $i++)
-			$array[$i]='0';
 		$consulta = $conn->query("SELECT * FROM Respuestas WHERE id_Preguntas=".$preg['id']);
 		while($entero = $consulta->fetch_array()){
 			$array[$entero['respuesta']]++;
@@ -137,6 +200,7 @@
 		for($i=0; $i<20; $i++){
 			echo "<h5>".$opcion_fac[$i].":</h5>";
 			echo '<div class="barra" style="width:'.(($array[$opcion_fac[$i]]*100)/($total)).'%;">'.round((($array[$opcion_fac[$i]]*100)/($total))).'%</div>';
+			$array[$opcion_fac[$i]] = '0';
 		}
 		echo "<br><br><br>";
 
@@ -148,8 +212,6 @@
 	$cons_preg = $conn->query("SELECT * FROM Preguntas WHERE tipo='Puntuar'");
 	while($preg = $cons_preg->fetch_array()){
 		$total = 0;
-		for($i=1; $i<11; $i++)
-			$array[$i]='0';
 		$consulta = $conn->query("SELECT * FROM Respuestas WHERE id_Preguntas=".$preg['id']);
 		while($entero = $consulta->fetch_array()){
 			$array[$entero['respuesta']]++;
@@ -160,6 +222,7 @@
 			for($i=1; $i<11; $i++){
 				echo "<h5>".$i.":</h5>";
 				echo '<div class="barra" style="width:'.(($array[$i]*100)/($total)).'%;">'.round((($array[$i]*100)/($total))).'%</div>';
+				$array[$i]='0';
 		}
 		echo "<br><br><br>";
 	}
