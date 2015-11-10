@@ -6,12 +6,7 @@
 	<BODY>
 
 		<?php
-			//Conexion con la base
-			$servername = "localhost";
-			$username = "usuario";
-			$password = "usuario";
-			$dbname = "SWECA";
-
+			include 'conexion.php';
 			//Crear conexion
 			$conn = new mysqli($servername, $username, $password, $dbname);
 			//Comprobar conexion
@@ -24,9 +19,6 @@
 
 			//$conn->close();
 		?>
-
-
-
 
 
 		<div align="center">

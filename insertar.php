@@ -4,20 +4,16 @@
 	</HEAD>
 	<BODY>
 	<?php
-//Conexion con la base
-$servername = "localhost";
-$username = "usuario";
-$password = "usuario";
-$dbname = "SWECA";
 
+include 'conexion.php';
 //Crear conexion
 $conn = new mysqli($servername, $username, $password, $dbname);
 //Comprobar conexion
 if ($conn->connect_error){
     die("Conexion fallida: " .  $conn->connect_error . "<br>");
 }
-$conn->set_charset("utf8");
 
+$conn->set_charset("utf8");
 
 $info=detect();
 $ip = getRealIP();
@@ -56,10 +52,12 @@ while($preg = $cons_preg->fetch_array()){
 $cons_preg->free_result();
 $conn->close();
 
+echo "<div align='center'><h1>Gracias por su colaboración.</h1></div>";
+
 }//fin else
 
 //FUNCIONES
-//Funcion para obtener ip (no funciona, no devuelve nada)
+//Funcion para obtener ip (el localhost lo devuelve en ipv6, ::1)
 function getRealIP() {
         if (!empty($_SERVER['HTTP_CLIENT_IP']))
             return $_SERVER['HTTP_CLIENT_IP'];
@@ -117,6 +115,11 @@ function resta($inicio, $fin)
   }
 
 ?>
-<h1><div align="center">Gracias por su colaboración.</div></h1>
+<div align="center">
+	<form action="inicio.html">
+       	<button type="submit">Volver a la página inicial</button>
+    </form>
+</div>
+
 </BODY>
 </HTML>  

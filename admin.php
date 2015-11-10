@@ -5,11 +5,7 @@
     <link rel="stylesheet" href="Barra.css">
   </head>
   <body>
-  	<div align="center">
-  		<form action="agregar.html">
-       			<button type="submit">Agregar una nueva pregunta</button>
-       	</form>
-    </div>
+  	
   	<?php
   	//Conexion con la base
 	$servername = "localhost";
@@ -25,8 +21,16 @@
 	}
 	$conn->set_charset("utf8");
 
+		//Agregar nueva pregunta 
+	?>
 
-
+	<div align='center'>
+  		<form method="post" action="agregar.php?var1=<?php echo base64_encode($username); ?>&var2=<?php echo base64_encode($password); ?>">
+       			<button type='submit'>Agregar una nueva pregunta</button>
+       	</form>
+   	</div>
+   	
+   	<?php
 	//ESTADISTICAS
 	//Sistema
 	//Sistema Operativo
@@ -247,6 +251,11 @@
 
 	$conn->close();
 	?>
+	<div align="center">
+		<form action="inicio.html">
+       		<button type="submit">Volver a la página inicial</button>
+    	</form>
+    </div>
 
   </body>
 </html>

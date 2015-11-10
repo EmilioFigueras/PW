@@ -10,10 +10,7 @@
 
 <?php
 /*Conectarme a la base de datos y crear tablas */
-$servername = "localhost";
-$username = "root";
-$password = "toor";
-$dbname = "SWECA";
+include 'conexion.php';
 
 //Crear conexion
 $conn = new mysqli($servername, $username, $password);
@@ -22,8 +19,10 @@ if ($conn->connect_error) {
     die("Fallo de conexión: " . $conn->connect_error);
 }
 
+
+
 //Creamos la base de datos
-$sql = "CREATE DATABASE SWECA";
+$sql = "CREATE DATABASE ".$dbname;
 if ($conn->query($sql) === TRUE) {
     echo "Base de datos creada correctamente.<br>";
 } else {

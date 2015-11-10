@@ -8,8 +8,8 @@
 
  		//Conexion con la base
 		$servername = "localhost";
-		$username = "admin";
-		$password = "admin";
+		$username = base64_decode($_GET["var1"]);
+		$password = base64_decode($_GET["var2"]);
 		$dbname = "SWECA";
 
 		//Crear conexion
