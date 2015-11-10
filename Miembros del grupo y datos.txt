@@ -1,0 +1,5 @@
+Autores: Emilio Figueras Martín e Iván Ruiz Valle.
+
+El archivo "conexion.php" hay que modificarlo con el nombre de usuario y contraseña adecuados para crear y modificar la base de datos. El nombre de la base de datos se puede dejar así o modificarlo, se creará la base de datos con el nombre indicado y luego se usará ese nombre para el resto del código. 
+
+La base de datos se crea con el archivo "SWECA_bd.php" y luego se entra en la web con el "inicio.html". 
